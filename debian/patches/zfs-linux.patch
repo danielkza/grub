@@ -177,6 +177,7 @@ Index: grub/util/grub.d/10_linux.in
 +  if [ x"$GRUBFS" = xzfs ]; then
 +      # Backwards compatibility for systems that expect Solaris parameters.
 +      echo "	insmod zfsinfo" | sed "s/^/$submenu_indentation/"
++      prepare_grub_to_access_device ${GRUB_DEVICE} | sed -e "s/^/\t/" -e "s/^/$submenu_indentation/"; echo
 +      echo "	zfs-bootfs (\$root) bootfs" | sed "s/^/$submenu_indentation/"
 +  fi
 +
